@@ -1,0 +1,11 @@
+header{
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+#usertextarea{
+    display: block;
+    width: 95%;
+    margin: 0.5em auto;
+}
