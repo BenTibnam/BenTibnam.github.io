@@ -1,11 +1,61 @@
-header{
-    margin: 0 auto;
-    text-align: center;
+:root{
+    --show-border: 1px solid black;
+    --defaut-font-size: 10px;
+    --label-font-size: 1.6em;
+    --instruction-font-size: 1.75em;
 }
 
+html{
+    font-size: var(--defaut-font-size);
+}
+
+main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: monospace;
+}
+
+.take-half{
+    width: 45vw;
+    height: 95vh;
+}
+
+/* TEXT AREA */
+textarea{
+    border: none;
+}
 
 #usertextarea{
-    display: block;
-    width: 95%;
-    margin: 0.5em auto;
+    border-right: var(--show-border);
+    
+}
+
+/* Option Area */
+#option-area{
+    display: flex;
+    background-color: #EEE;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.option{
+    position: relative;
+    left: 20px;
+    top: 20px;
+}
+
+.option > label{
+    font-size: var(--label-font-size);
+}
+
+#generate-button{
+    margin-top: 10px;
+}
+
+#instructions{
+    position: relative;
+    left: 20px;
+    top: 20px;
+    font-size: var(--instruction-font-size);
+    margin-bottom: 2em;
 }
