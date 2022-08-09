@@ -1,45 +1,85 @@
-// classes and ids
-var textAreaID = "usertextarea";
+function cutSymbolsFromText(text){
+    let bannedSymbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', ';', ':', '\'', '"', '\\', '|', '<', ',', '>', '.', '?', '/'];
+    let alertedUser = false;
+    let sanitizedWord = "";
+    for (let i = 0; i < text.length; i++)
+    {
+        let currChar = text[i];
+        let charBanned = false;
+        // checking if the current character is banned
+        for (let j = 0; j < bannedSymbols.length; j++){
+            let symbol = bannedSymbols[j]
+            if (currChar == symbol){
+                charBanned = true;
+            }
 
-var generateHTML = function(){
-    let textAreaElement = document.getElementById(textAreaID);
+            // alerting user once to banned character found
+            if(charBanned && !alertedUser){
+                alert(`The illegal symbol '${currChar}' found in option value ${text}. The output may no longer work properly.`);
+                alertedUser = true;
+            }
+        }
 
-    // adding a new line so we are able to read the last element
-    textAreaElement.value += '\n';
+        // skipping run if current character is banned
+        if (charBanned)
+        {
+            continue;
+        }
 
-    let textAreaValue = textAreaElement.value;
-    let textAreaLength = textAreaValue.length;
+        sanitizedWord += currChar;
+    }
+    
+    return sanitizedWord
+}
+
+function generateHTML(){
+    let options = {
+        "selectClassName": document.getElementById("select-class-text").value,
+    };
+
+    // getting a list of options    
+    let textArea = document.getElementById("usertextarea");
+    
+    // adding a new line so we can get all option elements
+    textArea.value += "\n"; 
 
     let word = "";
-    let options = [];
-    for (let i = 0; i < textAreaLength; i++)
-    {
-        let currChar = textAreaValue[i]
-
-        // checking for a new line stop and pushing word to array if \n is found
+    let optionList = [];
+    for (let i = 0; i < textArea.value.length; i++){
+        let currChar = textArea.value[i];
         if (currChar == '\n')
         {
-            options.push(word);
-            word = "";
+            optionList.push(word);
+            word="";
+            continue;
         }
 
-        // building the word
-        else
-        {
-            word += currChar;
-        }
+        word += currChar;
     }
 
-    textAreaElement.value = "";
+    console.log(optionList)
 
-    // generating the HTML with the word list
-    let html = "<select>\n"
-    for (option in options)
+    textArea.value = "";
+    let html="";
+    // checking if we need to add a class to the tag
+    if (options.selectClassName != "")
     {
-        html += "\t<option>" + options[option] + "</option>\n";
+        html = `<select class="${options.selectClassName}">\n`;
     }
-    html += "</select>"
+    else
+    {
+        html = "<select>\n";
+    }
 
-    textAreaElement.value = html
-    
+
+    for(let i = 0; i < optionList.length; i++)
+    {
+        let optionValue = cutSymbolsFromText(optionList[i].toLowerCase());
+
+        let optionHTML = `\t<option value="${optionValue}">${optionList[i]}</option>\n`;
+        html += optionHTML;
+    }
+
+    html += "</select>";
+    textArea.value = html;
 }

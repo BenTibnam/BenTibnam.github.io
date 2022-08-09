@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Select Element Generator</title>
-        <meta charset="utf-8"/>
+        <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="style.css"/>
-        <script type="text/javascript" src="script.js"></script>
+        <title>Generate Select Element</title>
     </head>
+    <body>
+        <header></header>
+        <main>
+            <div class="take-half" id="text-area">
+                <textarea class="take-half" id="usertextarea" placeholder="Enter options"></textarea>
+            </div>
 
-    <header>
-        <h1>Select Element Generator</h1>
-        <h4><em>Take the tedium out of select elements.</em></h5>
-    </header>
+            <div class="take-half" id="option-area">
+                <div id="instructions">
+                    <header>Generate Select Element</header>
+                    <p>To generate your select element just list options in the text area to the left. Once finished click <em>Generate HTML</em> and your select element will be generated.</em></p>
+                </div>
 
-    <main>
-        <div class="instruction">
-            <h3>Instructions</h3>
-            <p>Enter each option on a new line inside of the text area below. Once you are finished click the <em>Generate HTML</em> button and copy the code into your site.</p>
-        </div>
+                <div class="option">
+                    <label>Select Class: <input type="text" id="select-class-text"/></label>
+                </div>
 
-        <div class="userinput"> 
-            <textarea id="usertextarea" rows="32" cols="128" placeholder="Write options here..."></textarea>
-            <input type="button" value="Generate HTML" id="generatebutton" onclick="generateHTML()"/>
-        </div>
-    </main>
+                <input class= "option" type="button" id="generate-button" value="Generate HTML" onclick="generateHTML()"/>
+            </div>
+        </main>
+        <script src="script.js"></script>
 
+    </body>
 </html>
