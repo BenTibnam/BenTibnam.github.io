@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Script Runner</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script>
+            // turns console.log into a function that writes on the page
+            function rewriteConsoleLog(){
+                let newConsole = document.getElementById("output-console");
+                console.log = function(str){
+                    newConsole.innerText += str + "\n";
+                }
+            }
+
+            function executeEval(){
+                let inputConsole = document.getElementById("input");
+                let outputConsole = document.getElementById("output-console").innerText = "";
+                eval(inputConsole.value);
+            }
+
+        </script>
+        <style>
+            body{
+                background-color: black;
+            }
+            .console{
+                background-color: black;
+                color: white;
+            }
+
+            #consoles{
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+
+            #input-console{
+               
+            }
+            
+            #input{
+                position: relative;
+                width: 45vw;
+                height: 95vh;
+                top: 0px;
+                left: 0px;
+                border-color: darkgray;
+            }
+
+            #output-console{
+                padding-left: 100px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="consoles">
+            <section class="console" id="input-console">
+                <textarea class="console" id ="input"></textarea>
+            </section>
+
+            <section class="console" id="output-console">
+                
+            </section>
+        </div>
+        <input type="button" value="Execute" onclick="executeEval()"/>
+        <script>
+            rewriteConsoleLog();
+            console.log("Rewritten");
+        </script>
+    </body>
+</html>
