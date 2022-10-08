@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Bottle Deposit Calculator</title>
+        <link rel="stylesheet" href="style.css"/>
+        <script src="script.js"></script>
+        <link href="//db.onlinewebfonts.com/c/31e9678cd832600c6aa9caa3bd5a166b?family=Eponymous-BoldItalic" rel="stylesheet" type="text/css"/> 
+    </head>
+
+    <body>
+        <nav id="navbar">
+            <h1 id="title">Bottle Deposit Calculator</h1>
+            <h1><a href="#n-for-n-result">Find Price of n/$n Tags</a></h1>
+        </nav>
+        <div class="container" id="main-container">
+            <div class="container" id="input-container">
+                <div id="text-input">
+                    <input type="number" class="input-item" id="cost" placeholder="Enter price as displayed"/>
+                    <select class="bottle-deposit input-item">
+                        <option value="0">Select Bottle Deposit (0¢)</option>
+                        <option value="5" selected>5¢</option>
+                        <option value="10">10¢</option>
+                    </select>
+                    <select class="bottle-quantity input-item">
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="6">6</option>
+                        <option value="8">8</option>
+                        <option value="10">10</option>
+                        <option value="12">12</option>
+                        <option value="24">24</option>
+                    </select>
+
+                    <input type="button" class="input-item" value="Calculate Bottle Deposit" onclick="calculateBottleDeposit()"/> 
+                </div>
+            </div>
+            <div class="container" id="output-container"></div> 
+            <div class="container" id="n-for-n">
+                <h3 id="n-for-n-result">Find Single Item Cost With a Quantity Tag</h3>
+                <input type="number" value="1" min="1" id="siq-quantity"/>
+                <p id="for-n">/</p>
+                <input type="number" value="1" min="1" class="input-item" id="siq-price"/>
+                <input type="button" value="Calculate Single Item Cost" onclick="calculateSingleItem()"/>
+            </div>
+        </div>
+        <script>setupFields();</script>
+    </body>
+</html>

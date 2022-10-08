@@ -1,0 +1,125 @@
+:root{
+    /* BORDER VALUES */
+    --show-border: 1px solid black;
+    --disable-border: none;
+    --input-border: 1px solid #e31d1a;
+    --output-border: 0.5px solid black;
+}
+
+* {
+    border: var(--disable-border);
+    font-family: "Eponymous-BoldItalic", Verdana;
+    scroll-behavior: smooth;
+}
+
+input, select{
+    border: var(--show-border);
+}
+
+#navbar{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+h1 > a{
+    color: #e31d1a 
+}
+
+/* CONTAINER LAYOUT */
+#main-container{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 15px;
+}
+
+#input-container{
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: var(--show-border);
+    height: 25vh;
+}
+
+#text-input{
+    display: flex;
+    flex-direction: column;
+    font-size: 2em;
+}
+
+.input-item{
+    margin-bottom: 10px;
+}
+
+input[type="button"], input[type="number"], select{
+    border-radius: 110px;
+    color: #e31d1a;
+    background-color: #fff;
+    height: 32px;
+    font-weight: bold;
+    border: var(--input-border);
+}
+
+input:hover, select:hover{
+    border: var(--disable-border);
+    box-shadow: 1px 1px 5px #e31d1a;
+    text-decoration: underline;
+}
+
+input[type="button"]:hover{
+    cursor: pointer;
+}
+
+#output-container{
+    height: 45vh;
+    background-color: #f0f0f0;
+    overflow: scroll;
+}
+
+.output-text-good{
+    color: black;
+}
+
+.output-text-bad{
+    color: darkred;
+    font-weight:bolder;
+}
+
+
+#input-container, #output-container{
+    width: 99vw;
+}
+
+@media screen and (max-width: 500px) {
+    #output-container{
+        height: 50vh;
+    }
+
+    h1{
+        font-size: 18px;
+    }
+}
+
+#n-for-n{
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+
+#n-for-n > p{
+    display: inline;
+}
+
+#n-for-n > input{
+    width: 15vw;
+}
+
+#title{
+    text-align: center;
+    color: #e31d1a;
+}
