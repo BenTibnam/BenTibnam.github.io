@@ -12,6 +12,10 @@
     scroll-behavior: smooth;
 }
 
+hr{
+    color: black;
+}
+
 input, select{
     border: var(--show-border);
 }
@@ -74,7 +78,8 @@ input[type="button"]:hover{
 #output-container{
     height: 45vh;
     background-color: #f0f0f0;
-    overflow: scroll;
+    overflow: auto;
+    scroll-behavior: smooth;
 }
 
 .output-text-good{
@@ -89,6 +94,30 @@ input[type="button"]:hover{
 
 #input-container, #output-container{
     width: 99vw;
+}
+
+#total{
+    text-decoration: underline;
+}
+
+
+@media screen and (min-width: 600px){
+    #output-container{
+        padding: 0 0 0 30%;
+    }
+}
+
+@media screen and (max-height: 450px)
+{
+    #output-container
+    {
+        margin: 5vh 0 0 0;
+    }
+
+    #input-container
+    {
+        border: var(--disable-border);
+    }
 }
 
 @media screen and (max-width: 500px) {

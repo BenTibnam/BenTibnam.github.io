@@ -5,7 +5,6 @@ let outputContainer = undefined;
 let siqQuantity = undefined;
 let siqPrice = undefined;
 let siqOut = undefined;
-
 class Prices{
     constructor(price, bottleDeposit, quantity, total){
         this.price = price;
@@ -32,7 +31,7 @@ function setupFields(){
 
 // calculates the price with a bottle deposit
 function calculateBottleDeposit(){
-    let price = parseFloat(priceField.value) * 100; // converting value to pennies
+    let price = Math.round(parseFloat(priceField.value) * 100); // converting value to 
     let bottleDeposit = parseInt(bottleDepositField.value);
     let quantity = parseInt(quantityField.value);
 
@@ -44,22 +43,26 @@ function calculateBottleDeposit(){
     
 
     outputContainer.appendChild(output);
-    displayNumber(priceWithBottleDeposit)
+    displayPrice(quantity, price, priceWithBottleDeposit);
 }
 
-function displayNumber(number){
+function displayPrice(quantity, price, total)
+{
     let output = document.createElement("P");
     
-    
-    if (isNaN(number)){
-        output.innerText = "You must provide a price.\n";
-        output.className = "output-text-bad";
-    }else{
-        output.innerText += "Price with bottle deposit: " + number + "\n"; 
-        output.className = "output-text-good";
+    if (isNaN(quantity + price + total))
+    {
+        output.innerHTML = "<span class=\"output-text-bad\">Invalid input</span>"
+    }
+    else
+    {
+        output.innerHTML = `${quantity} @ ${price}: <span id = "total">${total}</span> <hr/>`;
     }
 
     outputContainer.appendChild(output);
+
+    // scrolls to the most recent calculation
+    outputContainer.scrollTo(0, outputContainer.scrollHeight);
 }
 
 function calculateSingleItem(){
