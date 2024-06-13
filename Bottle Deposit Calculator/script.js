@@ -5,16 +5,6 @@ let outputContainer = undefined;
 let siqQuantity = undefined;
 let siqPrice = undefined;
 let siqOut = undefined;
-class Prices{
-    constructor(price, bottleDeposit, quantity, total){
-        this.price = price;
-        this.bottleDeposit = bottleDeposit
-        this.quantity = quantity;
-        this.total = total;
-    }
-
-    
-}
 
 // define global field values in order to get values
 function setupFields(){
@@ -46,20 +36,29 @@ function calculateBottleDeposit(){
     displayPrice(quantity, price, priceWithBottleDeposit);
 }
 
+function display(text){
+    let output = document.createElement("P");
+    output.innerHTML = text;
+    outputContainer.appendChild(output);
+}
+
 function displayPrice(quantity, price, total)
 {
-    let output = document.createElement("P");
-    
     if (isNaN(quantity + price + total))
     {
-        output.innerHTML = "<span class=\"output-text-bad\">Invalid input</span>"
+        display("<span class=\"output-text-bad\">Invalid input</span>");
     }
     else
     {
-        output.innerHTML = `${quantity} @ ${price}: <span id = "total">${total}</span> <hr/>`;
+        display(`${quantity} @ ${price}: <span id = "total">${total}</span> <hr/>`);
+        
+        if (total > 10000)
+        {
+                display(`<span id="warning">Total ${total} seems a bit high. Make sure to include decimal(ex. 1.99) in price.</span>`)
+        }
     }
 
-    outputContainer.appendChild(output);
+    
 
     // scrolls to the most recent calculation
     outputContainer.scrollTo(0, outputContainer.scrollHeight);
@@ -75,4 +74,8 @@ function calculateSingleItem(){
     }else{
         siqOut.innerText = "You cannot have a quantity less then 1!"
     }
+}
+
+function clearOutput(){
+    outputContainer.innerHTML = "";
 }

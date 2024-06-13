@@ -100,6 +100,10 @@ input[type="button"]:hover{
     text-decoration: underline;
 }
 
+#warning{
+    color: #acac2c;
+}
+
 
 @media screen and (min-width: 600px){
     #output-container{
@@ -137,6 +141,7 @@ input[type="button"]:hover{
     justify-content: center;
     align-items: center;
     margin-bottom: 25px;
+    color: #e31d1a;
 }
 
 
