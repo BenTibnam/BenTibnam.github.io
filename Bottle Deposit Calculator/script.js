@@ -50,7 +50,16 @@ function displayPrice(quantity, price, total)
     }
     else
     {
-        display(`${quantity} @ ${price}: <span id = "total">${total}</span> <hr/>`);
+        let totalStr = total.toString();
+        let borderedTotal = ""
+
+        for(let i = 0; i < totalStr.length; i++){
+            console.log(totalStr);
+            let digitStr = "<span id=\"bordered\">" + totalStr[i] + "</span>";
+            borderedTotal += digitStr;
+        }
+
+        display(`${quantity} @ ${price}: <span id = "total">${borderedTotal}</span> <hr/>`);
         
         if (total > 10000)
         {
